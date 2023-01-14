@@ -1,0 +1,17 @@
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode* one = head;
+        ListNode* two = head->next;
+
+        while(two != nullptr){
+            one=one->next;
+            two=two->next;
+            if(two!=nullptr)two=two->next;
+            else nullptr;
+        }
+        return one;
+    }
+};
+
+link-https://leetcode.com/problems/middle-of-the-linked-list/?envType=study-plan&id=algorithm-i
