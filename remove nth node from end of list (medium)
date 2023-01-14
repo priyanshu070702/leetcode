@@ -16,3 +16,26 @@
     }
     
     link-https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/?envType=study-plan&id=algorithm-i
+
+int cnt=0;
+        ListNode *a=head;
+        while(a!=nullptr){
+            cnt++;
+            a=a->next;
+        }
+        ListNode *b=head;
+        for(int i=1;i<cnt-n;i++){
+            b=b->next;
+        }
+        ListNode *c;
+        c=b->next;
+        if(c->next==nullptr){
+            delete c;
+        }
+        else{
+            b->next=c->next;
+            delete c;
+            c=b->next;
+        }
+        return head;
+    }
