@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int halveArray(vector<int>& nums) {
+        priority_queue<double>pq;
+        double sum=0,var;
+        for(int i=0;i<nums.size();i++){
+            sum+=nums[i];
+            pq.push(nums[i]);
+        }
+        var=sum;
+        int cnt=0;
+        while(!pq.empty()){
+           double n1=pq.top();
+           pq.pop();
+           var-=(n1/2);
+           if(var<=(sum/2)){
+               cnt++;
+               break;
+           }
+           cnt++;
+           pq.push(n1/2);
+        }
+        return cnt;
+    }
+};
