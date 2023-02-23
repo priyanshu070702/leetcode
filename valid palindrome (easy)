@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string vc="";
+        int i=0;
+        while(i<s.length()){
+            if(s[i]>='a' && s[i]<='z' || s[i]>='A' && s[i]<='Z' || s[i]>='0' && s[i]<='9'){
+                if(s[i]>='A' && s[i]<='Z'){
+                    vc+=s[i]+32;
+                }
+                else vc+=s[i];
+            }
+            i++;
+        }
+        i=0;
+        int j=vc.length()-1;
+        string palin=vc;
+        while(i<=j){
+           swap(vc[i++],vc[j--]);
+        }
+        if(vc==palin)return true;
+        return false;
+    }
+};
