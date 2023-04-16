@@ -1,0 +1,50 @@
+answer 1
+class Solution {
+public:
+    vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
+        int row=0;
+        int max1=0;
+        int cnt=0;
+        vector<int>v;
+        for(int i=0;i<mat.size();i++){
+            for(int j=0;j<mat[0].size();j++){
+                if(mat[i][j]==1){
+                    cnt++;
+                }
+                if(cnt>max1){
+                    max1=cnt;
+                    row=i;
+                }
+            }
+            cnt=0;
+        }
+        v.push_back(row);
+        v.push_back(max1);
+        return v;
+    }
+};
+
+answer 2
+class Solution {
+public:
+    int maxDivScore(vector<int>& nums, vector<int>& divisors) {
+        sort(divisors.begin(),divisors.end());
+        int ans=divisors[0];
+        int cntint=0;
+        int cnt=0;
+        for(int i=0;i<divisors.size();i++){
+            //cnt=0;
+            for(int j=0;j<nums.size();j++){
+                if(nums[j]%divisors[i]==0){
+                    cntint++;
+                }
+                if(cntint>cnt){
+                    cnt=cntint;
+                    ans=divisors[i];
+                }
+            }
+            cntint=0;
+        }
+        return ans;
+    }
+};
