@@ -11,6 +11,7 @@ public:
         bool n = func(b,w,i,j-1,ind+1);
         b[i][j]=temp;
         return(x||y||z||n);
+        //recursion
     }
     bool exist(vector<vector<char>>& board, string word) {
         int n = board.size();
