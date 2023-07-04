@@ -32,9 +32,6 @@ public:
         if(sum==0){
             return true;
         }
-        if(sum<0){
-            return false;
-        }
         if(dp[index][sum]!=-1){
             return dp[index][sum];
         }
