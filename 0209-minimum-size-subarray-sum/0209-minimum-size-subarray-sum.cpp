@@ -5,7 +5,7 @@ public:
         int i=0,j=0;
         int sum=0;
         int mn=INT_MAX;
-        for(j=0;j<n;j++){
+        while(j<n){
             sum+=nums[j];
             while(sum>=target){
                 int len=j-i+1;
@@ -13,6 +13,7 @@ public:
                 sum-=nums[i];
                 i++;
             }
+            j++;
         }
         if(mn==INT_MAX)return 0;
         return mn;
