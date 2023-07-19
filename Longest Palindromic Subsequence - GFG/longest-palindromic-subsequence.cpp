@@ -15,10 +15,10 @@ class Solution{
         if(dp[i][j]!=-1)return dp[i][j];
         int cnt=0;
         if(A[i]==B[j]){
-            cnt+=1+solveMemo(i+1,j+1,A,B,n,dp);
+            cnt=1+solveMemo(i+1,j+1,A,B,n,dp);
         }
         else{
-            cnt+=max(solveMemo(i+1,j,A,B,n,dp),solveMemo(i,j+1,A,B,n,dp));
+            cnt=max(solveMemo(i+1,j,A,B,n,dp),solveMemo(i,j+1,A,B,n,dp));
         }
         return dp[i][j] = cnt;
     }
