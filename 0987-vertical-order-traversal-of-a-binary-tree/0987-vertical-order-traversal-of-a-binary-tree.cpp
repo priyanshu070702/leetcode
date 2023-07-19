@@ -32,8 +32,10 @@ public:
         vector<vector<int>>ans;
         for(auto it:mp){
             vector<int>st;
-            for(auto i:it.second){
-                st.insert(st.end(),i.second.begin(),i.second.end());
+            for(auto it2:it.second){
+                for(auto it3:it2.second){
+                    st.push_back(it3);
+                }
             }
             ans.push_back(st);
         }
