@@ -4,10 +4,7 @@ public:
         stack<long long>st;
         int i=nums.size()-1;
         while(i>=0){
-            if(st.empty()){
-                st.push(nums[i]);
-            }
-            else if(st.top()<nums[i]){
+            if(st.empty() || st.top()<nums[i]){
                 st.push(nums[i]);
             }
             else if(nums[i]<=st.top()){
