@@ -1,24 +1,23 @@
 class Solution {
 public:
-    void func_combi_sum(vector<vector<int>>&ans,int start,vector<int>&st, vector<int>& candidates, int target){
-       if(target==0){
-           ans.push_back(st);
-           return;
-       }
-       if(target < 0){
+    vector<vector<int>>ans;
+    void solveRec(vector<int>&candidates, int target, vector<int>&st, int idx){
+        if(idx==candidates.size())return;
+        if(target<0)return;
+        if(target==0){
+            ans.push_back(st);
             return;
         }
-       for(int idx=start;idx<candidates.size();idx++){
-           st.push_back(candidates[idx]);
-           func_combi_sum(ans,idx,st,candidates,target-candidates[idx]);
-           st.pop_back();
-       }
+        if(candidates[idx]<=target){
+            st.push_back(candidates[idx]);
+            solveRec(candidates, target-candidates[idx], st, idx);
+            st.pop_back();
+        }
+        solveRec(candidates, target, st, idx+1);
     }
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target){
-
-        vector<vector<int>>ans;
-        vector<int>store;
-        func_combi_sum(ans,0,store,candidates,target);
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<int>st;
+        solveRec(candidates,target,st,0);
         return ans;
     }
 };
