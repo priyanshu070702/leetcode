@@ -38,11 +38,30 @@ class Solution
         }
         return dp[0][0];
     }
+    int solveOP(int n, int m, string s1, string s2){
+        vector<int>curr(m+1,0);
+        vector<int>next(m+1,0);
+        for(int i=n-1;i>=0;i--){
+            for(int j=m-1;j>=0;j--){
+                int len=0;
+                if(s1[i]==s2[j]){
+                    len=1+next[j+1];
+                } 
+                else{
+                    len=max(next[j],curr[j+1]);
+                }
+                curr[j]=len;
+            }
+            next=curr;
+        }
+        return next[0];
+        
+    }
     int lcs(int n, int m, string s1, string s2)
     {
         // vector<vector<int>>dp(n+1,vector<int>(m+1,-1));
         // return solveMemo(n,m,s1,s2,0,0,dp);
-        return solveTab(n,m,s1,s2);
+        return solveOP(n,m,s1,s2);
     }
 };
 
