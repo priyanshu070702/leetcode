@@ -42,11 +42,31 @@ class Solution
         }
         return dp[0][0];
     }
+    int SO(string s1, string s2){
+        int n=s1.length();
+        int m=s2.length();
+        vector<int>curr(m+1,0);
+        vector<int>next(m+1,0);
+        for(int i=n-1;i>=0;i--){
+            for(int j=m-1;j>=0;j--){
+                int len=0;
+                if(s1[i]==s2[j]){
+                    len=1+next[j+1];
+                }
+                else{
+                    len=max(curr[j+1],next[j]);
+                }
+                curr[j]=len;
+            }
+            next=curr;
+        }
+        return next[0];
+    }
     int lcs(int n, int m, string s1, string s2)
     {
         // vector<vector<int>>dp(n+1,vector<int>(m+1,-1));
         // return solveRec(s1,s2,0,0,dp);
-        return solveRec(s1,s2);
+        return SO(s1,s2);
     }
 };
 
