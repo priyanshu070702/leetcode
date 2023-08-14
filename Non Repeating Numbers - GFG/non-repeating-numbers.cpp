@@ -8,13 +8,28 @@ class Solution
 public:
     vector<int> singleNumber(vector<int> nums) 
     {
-        map<int,int>mp;
-        for(int i=0;i<nums.size();i++){
-            mp[nums[i]]++;
-        }
+        // map<int,int>mp;
+        // for(int i=0;i<nums.size();i++){
+        //     mp[nums[i]]++;
+        // }
+        // vector<int>ans;
+        // for(auto it:mp){
+        //     if(it.second==1)ans.push_back(it.first);
+        // }
+        // return ans;
+        
+        sort(nums.begin(),nums.end());
+        nums.push_back(-1);
         vector<int>ans;
-        for(auto it:mp){
-            if(it.second==1)ans.push_back(it.first);
+        int i=0;
+        while(i<nums.size()-1){
+            if(nums[i]==nums[i+1]){
+                i=i+2;
+            }
+            else{
+                ans.push_back(nums[i]);
+                i++;
+            }
         }
         return ans;
     }
