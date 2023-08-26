@@ -51,7 +51,7 @@ public:
         for(int i=0;i<pairs.size();i++){
             p.push_back({pairs[i][0],pairs[i][1]});
         }
-        sort(p.begin(),p.end(),comp);
+        sort(p.begin(),p.end());
         
         // int sz=p.size();
         // vector<vector<int>>dp(sz+1,vector<int>(sz+2,-1));
