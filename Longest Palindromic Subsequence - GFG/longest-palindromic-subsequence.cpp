@@ -10,43 +10,25 @@ using namespace std;
 
 class Solution{
   public:
-    int solveMemo(int i, int j, string A, string  B, int n, vector<vector<int>>&dp){
-        if(i==n || j==n)return 0;
+    int solveRec(string A, string B, int n, int i, int j,vector<vector<int>>&dp){
+        if(i>=n || j>=n)return 0;
+        
         if(dp[i][j]!=-1)return dp[i][j];
-        int cnt=0;
+        int ans=0;
         if(A[i]==B[j]){
-            cnt=1+solveMemo(i+1,j+1,A,B,n,dp);
+            ans=1+solveRec(A,B,n,i+1,j+1,dp);
         }
         else{
-            cnt=max(solveMemo(i+1,j,A,B,n,dp),solveMemo(i,j+1,A,B,n,dp));
+            ans=max(solveRec(A,B,n,i+1,j,dp),solveRec(A,B,n,i,j+1,dp));
         }
-        return dp[i][j] = cnt;
-    }
-    int solveTab(string A, string B){
-        int n=A.length();
-        vector<vector<int>>dp(n+1,vector<int>(n+1,0));
-        for(int i=n-1;i>=0;i--){
-            for(int j=n-1;j>=0;j--){
-                if(A[i]==B[j]){
-                    dp[i][j]=1+dp[i+1][j+1];
-                }
-                else{
-                    dp[i][j]=max(dp[i][j+1],dp[i+1][j]);
-                }
-            }
-        }
-        return dp[0][0];
-    }
+        return dp[i][j]=ans;
+    } 
     int longestPalinSubseq(string A) {
         string B=A;
         reverse(B.begin(),B.end());
-        int n=A.length();
-        //memoization
-        // vector<vector<int>>dp(n+1,vector<int>(n+1,-1));
-        // return solveMemo(0,0,A,B,n,dp);
-        
-        //tabulation
-        return solveTab(A,B);
+        int n=B.length();
+        vector<vector<int>>dp(n+1,vector<int>(n+1,-1));
+        return solveRec(A,B,n,0,0,dp);
     }
 };
 
