@@ -20,11 +20,30 @@ class Solution{
 	    
 	    return dp[sum][idx]=(take%mod+notTake%mod)%mod;
 	}
+	int solveTab(int arr[], int n, int sum){
+	    vector<vector<int>>dp(sum+2,vector<int>(n+1,0));
+	    for(int i=0;i<=n;i++){
+	        dp[0][i]=1;
+	    }
+	    for(int i=0;i<=sum;i++){
+	        for(int j=n-1;j>=0;j--){
+	            int take=0;
+        	    if(arr[j]<=i){
+        	        take=dp[i-arr[j]][j+1];
+        	    }
+        	    int notTake=dp[i][j+1];
+        	    
+        	    dp[i][j]=(take%mod+notTake%mod)%mod;
+	        }
+	    }
+	    return dp[sum][0];
+	}
 	int perfectSum(int arr[], int n, int sum)
 	{
         sort(arr,arr+n);
-        vector<vector<int>>dp(sum+1,vector<int>(n+1,-1));
-        return solveRec(arr,n,sum,0,dp);
+        // vector<vector<int>>dp(sum+1,vector<int>(n+1,-1));
+        // return solveRec(arr,n,sum,0,dp);
+        return solveTab(arr, n, sum);
 	}
 	  
 };
