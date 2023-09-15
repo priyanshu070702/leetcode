@@ -23,6 +23,23 @@ public:
         
         return dp[sum][idx] = take||notTake;
     }
+    bool solveTab(int N, int arr[], int sum){
+        vector<vector<int>>dp(sum+1,vector<int>(N+1,0));
+        for(int i=0;i<=N;i++){
+            dp[0][i]=1;
+        }
+        for(int s=0;s<=sum;s++){
+            for(int idx=N-1;idx>=0;idx--){
+                int take=0;
+                if(arr[idx]<=s){
+                    take=dp[s-arr[idx]][idx+1];
+                }
+                int notTake=dp[s][idx+1];
+                dp[s][idx]=take|notTake;
+            }
+        }
+        return dp[sum][0];
+    }
     int equalPartition(int N, int arr[])
     {
         int sum=0;
@@ -30,8 +47,9 @@ public:
             sum+=arr[i];
         }
         if(sum%2!=0)return 0;
-        vector<vector<int>>dp(sum+1, vector<int>(N+1,-1));
-        return solveRec(N,arr,sum/2,0,dp);
+        // vector<vector<int>>dp(sum+1, vector<int>(N+1,-1));
+        // return solveRec(N,arr,sum/2,0,dp);
+        return solveTab(N, arr, sum/2);
     }
 };
 
