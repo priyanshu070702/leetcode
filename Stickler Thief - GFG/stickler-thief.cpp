@@ -17,10 +17,21 @@ class Solution
         
         return dp[idx]=max(take,notTake);
     }
+    int solveTab(int arr[], int n){
+        vector<int>dp(n+2,0);
+        for(int idx=n-1;idx>=0;idx--){
+            int take=arr[idx]+dp[idx+2];
+            int notTake=dp[idx+1];
+            
+            dp[idx]=max(take,notTake);
+        }
+        return dp[0];
+    }
     int FindMaxSum(int arr[], int n)
     {
-        vector<int>dp(n+1,-1);
-        return solveRec(arr,n,0,dp);
+        // vector<int>dp(n+1,-1);
+        // return solveRec(arr,n,0,dp);
+        return solveTab(arr,n);
     }
 };
 
