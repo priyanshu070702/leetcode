@@ -1,6 +1,6 @@
 # DFS of Graph
 ## Easy
-<div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">You are given a connected undirected graph. Perform a Depth First Traversal of the graph.</span><br><span style="font-size: 18px;"><strong>Note: </strong>Use a recursive approach to</span><span style="font-size: 18px;">&nbsp;find the DFS traversal of the graph starting from the 0th vertex from left to right according to the graph.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">You are given a connected undirected graph. Perform a Depth First Traversal of the graph.</span><br><span style="font-size: 18px;"><strong>Note: </strong>Use the recursive approach to</span><span style="font-size: 18px;">&nbsp;find the DFS traversal of the graph starting from the 0th vertex from left to right according to the graph.</span></p>
 <p><br><span style="font-size: 18px;"><strong>Example 1:</strong></span></p>
 <pre><span style="font-size: 18px;"><strong>Input: </strong>V = 5 , adj = [[2,3,1] , [0], [0,4], [0], [2]]
 </span><img style="height: 300px; width: 300px;" src="https://media.geeksforgeeks.org/img-practice/graph-1659528381.png" alt=""><span style="font-size: 18px;">
