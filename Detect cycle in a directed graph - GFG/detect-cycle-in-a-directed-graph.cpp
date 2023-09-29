@@ -12,8 +12,7 @@ class Solution {
         for(auto it:adj[idx]){
             if(vis[it]==1 && dfsvis[it]==1)return true;
             else if(vis[it]==0){
-                bool val=isCycle(it,vis,dfsvis,adj);
-                if(val==1)return true;
+                if(isCycle(it,vis,dfsvis,adj)==1)return true;
             }
         }
         dfsvis[idx]=0;
